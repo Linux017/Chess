@@ -5,6 +5,8 @@ const handlebars = require('express-handlebars')
 const router = require('./config/routes')
 const sass =  require('node-sass-middleware')
 
+
+
 app.engine('handlebars', handlebars())
 app.set('view engine', 'handlebars')
 app.set('views', __dirname + '/app/views')
@@ -32,8 +34,12 @@ app.use(sass({
     prefix: '/css'
 }))
 
+app.use(express.urlencoded({extended: false}));
+
 app.use(logger('short'))
 
 app.use(router)
 
 app.listen(3000)
+
+

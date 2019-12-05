@@ -1,12 +1,18 @@
 function sobre(req,res){
-    res.render('main/about',{
-    });
+    res.render('main/sobre',{
+    })
 }
 
-function index(req,res){
-    res.render('main/index',{
-        content: "Mano gg"
-    });
+function login(req,res){
+    res.render('main/login',{
+
+    })
 }
 
-module.exports = {sobre,index};
+function cadastro(req,res){
+    res.render('main/cadastro',{
+
+    })
+}
+
+module.exports = {sobre,login,cadastro};

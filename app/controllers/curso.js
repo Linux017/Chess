@@ -1,27 +1,70 @@
+// Arquivo app/controllers/curso.js
+var models = require('../models/index');
+var Curso = models.cursos;
 
+const index = async (req, res) => {
+    try{
+        const cursos = await Curso.findAll();
+        res.render('curso/index', {
+            cursos:cursos, 
+        }); 
+    }catch(e){
+        console.log(e)
+    }
+};
 
-const index = async function(req,res) {
+const read = async (req, res) => {
+    console.log(req.body)
+    try {
+        curso = await Curso.findOne({
+            where:{
+                id : req.param('id')
+            }
+        });
+        res.end(JSON.stringify(curso))
+    } catch (error) {
+        console.log(error)
+    }
+};
 
-}
-const read = async function(req,res) {
-    
-}
-const create = async function(req,res) {
-    if(req.route.methods.get){
-        res.render('curso/create')
-    }else{
-
+const create = async (req, res) => {
+    console.log(req.body)
+    try {
+        if (req.route.methods.get) {
+            res.render('curso/create');
+        } else {
+            curso = await Curso.create({
+                sigla: req.body.sigla,
+                nome: req.body.nome,
+                descricao: req.body.descricao,
+                id_area: req.body.area
+            });
+            res.redirect('/curso');
+        }
+    } catch (error) {
+        console.log(error)
     }
 
-    // res.end()
-}
-const update = async function(req,res) {
-    
-}
-const remove = async function(req,res) {
-    
-}
+};
 
-module.exports = {
-    index,read,create,update,remove
-}
+const update = async (req, res) => {
+
+};
+
+const remove = async (req, res) => {
+    try {
+        console.log(req.param('id'))
+        curso = await Curso.destroy({
+            where: { id: req.param('id') }
+        });
+        res.redirect('/curso');
+        
+    } catch (error) {
+        console.log(error)
+    }
+
+       
+};
+
+
+module.exports = { index, read, create, update, remove }
