@@ -1,0 +1,42 @@
+<div class="container">    
+<div class="row mt-8">
+    <h1>Cadastro de Usuário</h1>
+</div>
+
+<div class="bs-docs-section row col-8">
+    <form action="/user/create" method="post" id="formzao">
+    <fieldset>
+        </div>
+        <div class="form-group">
+        <label for="sigla">Nome completo : </label>
+        <input type="text"  maxlength="100" class="form-control" id="nome" name="nome" placeholder="Informe seu nome completo">
+        </div>
+
+        <div class="form-group">
+        <label for="nome">Email :</label>
+        <input type="email" maxlength="255" class="form-control" id="email" name="email" placeholder="Informe o seu email">
+        </div>
+
+        <div class="form-group">
+        <label for="curso">Curso na UFAM :</label>
+        <select class="form-control" id="curso" name="curso">
+        </select>
+        </div>
+
+        <div class="form-group">
+        <label for="sigla">Senha de acesso : </label>
+        <input type="password"  minlength="6" maxlength="100" class="form-control" id="password" name="password" >
+        </div>	
+
+        <div class="form-group has-danger">
+        <label for="sigla">Confirmação : </label>
+        <input type="password" minlength="6" maxlength="100" class="form-control" id="pass" >
+        </div>	
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+		<button type="submit" class="btn btn-primary mt-3" >Enviar</button>	
+    </fieldset>
+    </form>
+</div>
+</div>
+<script defer src="js/signup.js"></script>
+<link rel="stylesheet" href="css/cadastro-usuario.css">

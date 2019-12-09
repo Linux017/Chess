@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'areas'
   });
   Area.associate = function(models) {
-    // associations can be defined here
+    Area.hasMany(models.cursos);
   };
   return Area;
 };

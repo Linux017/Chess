@@ -1,19 +1,47 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-6">
-<form>
-  <fieldset>
-    <legend><h1>Acesse sua conta</h1></legend>
-    <div class="form-group">
-      <input type="email" class="form-control" id="email" placeholder="Seu endereço de Email">
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="password" placeholder="Senha de sua conta">
-    </div>
-	    <button type="submit" class="btn btn-primary btn-lg btn-block">Acessar</button>
-    </fieldset>
-</form>
+      <form method="post" action="/login">
+        <fieldset>
+          <legend><h1>Acesse sua conta</h1></legend>
+          <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Seu endereço de Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Senha de sua conta">
+          </div>
+          <input type="hidden" name="_csrf" value="{{csrf}}">
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Acessar</button>
+          </fieldset>
+      </form>
 	</div>
 	</div>
 </div>
-<link rel="stylesheet" href="css/login.css">
+{{#if badLogin}}
+<button type="button" class="btn btn-primary" id="msgClicker" data-toggle="modal" data-target="#msg" hidden></button>
+
+<div class="modal fade" id="msg" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="label">Falha no login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Email ou senha inválidos, verifique seus dados e tente novamente.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script defer>
+window.onload = function(){
+  document.querySelector('#msgClicker').click();
+}
+
+</script>
+{{/if}}

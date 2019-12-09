@@ -17,7 +17,7 @@ module.exports = {
       descricao: {
         type: Sequelize.TEXT
       },
-      id_area: {
+      area_id: {
         type: Sequelize.INTEGER
       },
       created_at: {

@@ -13,4 +13,15 @@ const index = async (req, res) => {
         console.log(e)
     }
 };
-module.exports = { index }
+
+const readAll = async (req, res) => {
+    try{
+        const areas = await Area.findAll();
+        res.writeHead(200, {"Content-Type": "text/html; charset=utf-8"});
+        res.end(JSON.stringify(areas)); 
+    }catch(e){
+        console.log(e)
+    }
+};
+
+module.exports = { index, readAll }

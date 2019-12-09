@@ -16,17 +16,38 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+
+        {{#if user_data}}
+
+          <li class="nav-item">
+            <a class="nav-link" href="/partida">Nova Partida</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ranking">Ranking</a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link" href="/curso">Curso</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/sobre">Sobre</a>
-          </li>  
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout [{{user_data.nome}}]</a>
+          </li> 
+        {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/sobre">Sobre</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/siginup">Sign Up</a>
-          </li>            
+            <a class="nav-link" href="/signup">Sign Up</a>
+          </li>  
+        {{/if}}          
         </ul>
       </div>
     </nav>
@@ -57,4 +78,7 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/popper.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="chessboardjs/chessboard-1.0.0.min.css">
+    <script src="/chessboardjs/chessboard-1.0.0.min.js"></script>
+    <script src="/chess/chess.min.js"></script>
 </html>

@@ -1,5 +1,9 @@
 <div class="container">
-<h1>Cursos</h1>
+<div class="row mt-8">
+  <h1 class="col-11"> Cursos</h1>
+    <button type="button" class="btn btn-primary"  onclick="location.href = '/curso/create'" >Criar</button>
+</div>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -7,7 +11,7 @@
       <th scope="col">Sigla</th>
       <th scope="col">Nome</th>
       <th scope="col">Descrição</th>
-      <th scope="col">Area</th>
+      <th scope="col">Área</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
@@ -20,15 +24,15 @@
       <th scope="row">{{sigla}}</th>
       <th scope="row">{{nome}}</th>
       <th scope="row">{{descricao}}</th>
-      <th scope="row">{{area}}</th>
+      <th scope="row">{{area.nome}}</th>
       <th>
-          <a href="curso/editar/{{id}}">editar</a>
+          <a href="curso/update/{{id}}">editar</a>
           <a href="curso/remove/{{id}}">deletar</a>
+          <a href="curso/read/{{id}}">visualizar</a>
       </th>
     </tr>
     {{/each}}
   </tbody>
 </table>    
-<button id="teste">cu</button>
 
 </div>

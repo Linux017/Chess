@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Partida = sequelize.define('Partida', {
+  const Partida = sequelize.define('partidas', {
     id_user_1: DataTypes.INTEGER,
     id_user_2: DataTypes.INTEGER,
     winner: DataTypes.INTEGER,
@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     underscored: true,
   });
   Partida.associate = function(models) {
-    // associations can be defined here
+    Partida.hasMany(models.mensagems);
+    Partida.belongsTo(models.users);
   };
   return Partida;
 };

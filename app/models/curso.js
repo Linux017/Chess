@@ -4,13 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     sigla: DataTypes.STRING,
     nome: DataTypes.STRING,
     descricao: DataTypes.TEXT,
-    id_area: DataTypes.INTEGER
+    area_id: DataTypes.INTEGER
   }, {
     underscored: true,
     tableName: 'cursos'
   });
   Curso.associate = function(models) {
-    // associations can be defined here
+    Curso.belongsTo(models.areas);
   };
   return Curso;
 };
